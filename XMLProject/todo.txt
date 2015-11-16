@@ -1,0 +1,2 @@
+1) erweitern DB
+2) .xsd für db festlegen

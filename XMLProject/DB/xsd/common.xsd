@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+<!-- Typ-Definitionen-->
+<!-- Allgemeine Beschreibung von Adresse, Name, E-mail, Datum  -->
+
+	<xsd:simpleType name="nameTyp">
+		<xsd:restriction base="xsd:string">
+			<xsd:pattern value="([A-ZÄ,Ö,Ü][a-zä,ö,ü,ß]*([ |-][A-ZÄ,Ö,Ü][a-zä,ö,ü,ß]*)?)*"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="emailTyp">
+		<xsd:restriction base="xsd:string">
+			<xsd:pattern value="([a-zA-Zä,ö,ü,ß,Ä,Ü,Ö][^@|^.]+@[a-zA-Zä,ö,ü,ß,Ä,Ü,Ö][^@]+([\.][a-zA-Zä,ö,ü,ß,Ä,Ü,Ö][^@|^.]+)+)"/>	
+			<xsd:minLength value="7" />		
+		</xsd:restriction>	
+	</xsd:simpleType>
+	
+	<xsd:complexType name="adresseTyp">
+		<xsd:attribute name="strasse" type="xsd:string" use="required"/>
+		<xsd:attribute name="hausnummer" type="xsd:string" use="required"/>
+		<xsd:attribute name="stadt" type="nameTyp" use="required"/>
+		<xsd:attribute name="zip" type="postleitzahlTyp" use="required"/>
+		<xsd:attribute name="land" type="nameTyp" default="Deutschland"/>
+	</xsd:complexType>
+	
+	<xsd:simpleType name="postleitzahlTyp">
+		<xsd:restriction base="xsd:decimal">
+			<xsd:totalDigits value="5"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="datumTyp">
+		<xsd:restriction base="xsd:date">
+			<xsd:maxExclusive value="2016-02-21"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="telefonTyp">
+		<xsd:restriction base="xsd:string">
+	      <xsd:pattern value="[0-9]{4,5}[/][0-9]{4,7}"/>
+	    </xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="priceTyp">
+		<xsd:restriction base="xsd:string">
+			<xsd:pattern value="\d{2,4}[.]\d{2} EUR"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="timeTyp">
+		<xsd:restriction base="xsd:string">
+			<xsd:pattern value="\d{2}[:]\d{2}"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="idTyp">
+		<xsd:restriction base="xsd:decimal">
+			<xsd:minLength value="1"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:simpleType name="koordinatenTyp">
+		<xsd:restriction base="xsd:string">
+			<xsd:pattern value="\d{2}[\.]\d{2,}"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+
+</xsd:schema>

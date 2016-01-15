@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+	<xsd:include schemaLocation="common.xsd"/>
+	
+	<!-- Typ-Definitionen-->
+	<!-- allgemeine Beschreibung von Sicherheitsunternehmen -->
+	<xsd:complexType name="unternehmenTyp">	
+		<xsd:sequence>
+			<xsd:element name="adresse" type="adresseTyp"/>
+			<xsd:element name="alleMitarbeiter" type="alleMitarbeiterTyp" />
+			<xsd:element name="gebiete" type="gebieteTyp" />
+			<xsd:element name="kunden" type="kundenTyp"/>
+			<xsd:element name="unfaelle" type="unfaelleTyp"/>
+			<xsd:element name="rechnungen" type="rechnungenTyp"/>
+		</xsd:sequence>
+		<xsd:attribute name="name" type="nameTyp" use="required"/>
+		<xsd:attribute name="email" type="emailTyp" use="required"/>
+		<xsd:attribute name="telefon" type="telefonTyp" use="required"/>
+		
+	</xsd:complexType>
+	
+	<xsd:complexType name="rechnungenTyp">
+		<xsd:sequence>
+			<xsd:element name="rechnung" type="rechnungTyp" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="rechnungTyp">
+		<xsd:sequence>
+			<xsd:element name="rechnungsBetrag" type="priceTyp"/>
+			<xsd:element name="status" type="rechnungStatusTyp"/>
+		</xsd:sequence>
+		<xsd:attribute name="unfallId" type="idTyp" use="required"/>
+	</xsd:complexType>
+	
+	<xsd:simpleType name="rechnungStatusTyp">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="bezahlt" />
+			<xsd:enumeration value="nicht bezahlt" />
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:complexType name="unfaelleTyp">
+		<xsd:sequence>
+			<xsd:element name="unfall" type="unfallTyp" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="unfallTyp">
+		<xsd:sequence>
+			<xsd:element name="kunde_id" type="idTyp"/>
+			<xsd:element name="objekt_id" type="idTyp"/>
+			<xsd:element name="datum" type="datumTyp"/>
+			<xsd:element name="uhrzeit" type="timeTyp"/>
+			<xsd:element name="ursache" type="ursacheTyp"/>
+		</xsd:sequence>
+		<xsd:attribute name="id" type="idTyp" use="required"/>
+	</xsd:complexType>
+	
+	<xsd:simpleType name="ursacheTyp">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="Signalisierung"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:complexType name="gebieteTyp">
+		<xsd:sequence>
+			<xsd:element name="gebiet" type="gebietTyp" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="gebietTyp">
+		<xsd:sequence>
+			<xsd:element name="gebietSchutzObjekte" type="gebietSchutzObjekteTyp"/>
+			<xsd:element name="mitarbeiter_id" type="idTyp"/>
+		</xsd:sequence>
+		<xsd:attribute name="id" type="idTyp" use="required"/>
+	</xsd:complexType>
+	
+	<xsd:complexType name="gebietSchutzObjekteTyp">
+		<xsd:sequence>
+			<xsd:element name="objekt_id" type="idTyp" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="alleMitarbeiterTyp">
+		<xsd:sequence>
+			<xsd:element name="mitarbeiter" type="mitarbeiterTyp" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="mitarbeiterTyp">
+		<xsd:sequence>
+			<xsd:element name="dienstalter_monate" type="xsd:decimal"/>
+			<xsd:element name="fuehrerschein" type="fuehrerscheinTyp"/>
+		</xsd:sequence>
+		<xsd:attribute name="id" type="idTyp" use="required"/>
+		<xsd:attribute name="name" type="nameTyp" use="required"/>
+		<xsd:attribute name="vorname" type="nameTyp" use="required"/>
+	</xsd:complexType>
+	
+	<xsd:simpleType name="fuehrerscheinTyp">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="ja"/>
+			<xsd:enumeration value="nein"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<xsd:complexType name="kundenTyp">
+		<xsd:sequence>
+			<xsd:element name="kunde" type="customerTyp" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="customerTyp">
+		<xsd:sequence>
+			<xsd:element name="geburtsDatum" type="datumTyp"/>
+			<xsd:element name="telefon" type="telefonTyp"/>
+			<xsd:element name="email" type="emailTyp"/>
+			<xsd:element name="schutzObjekte" type="schutzObjekteTyp"/>
+		</xsd:sequence>
+		<xsd:attribute name="id" type="idTyp" use="required"/>
+		<xsd:attribute name="name" type="nameTyp" use="required"/>
+		<xsd:attribute name="vorname" type="nameTyp" use="required"/>
+	</xsd:complexType>
+	
+	<xsd:complexType name="schutzObjekteTyp">
+		<xsd:sequence>
+			<xsd:element name="objekt" type="objektTyp" minOccurs="1" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="objektTyp">
+		<xsd:sequence>
+			<xsd:element name="objektAdresse" type="objektAdresseTyp"/>
+		</xsd:sequence>
+		<xsd:attribute name="id" type="idTyp" use="required"/>
+	</xsd:complexType>
+	
+	<xsd:complexType name="objektAdresseTyp">
+		<xsd:complexContent>
+			<xsd:extension base="adresseTyp">
+				<xsd:sequence>
+					<xsd:element name="koordinate_x" type="koordinatenTyp"/>
+					<xsd:element name="koordinate_y" type="koordinatenTyp"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<!-- Element-Definitionen -->
+	<!-- Sicherheitsunternehmen -->
+	<xsd:element name="sicherheitsDienst">
+		<xsd:annotation>
+			<xsd:documentation>Sicherheitsdienst</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexType>			
+			<xsd:sequence>
+				<xsd:element name="sicherheitsUnternehmen">
+					<xsd:annotation>
+						<xsd:documentation>Unternehmen</xsd:documentation>
+					</xsd:annotation>
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element name="unternehmen" type="unternehmenTyp" maxOccurs="unbounded"/>
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+			</xsd:sequence>
+			<xsd:attribute name="title" type="xsd:string"/>
+		</xsd:complexType>
+	</xsd:element>
+
+</xsd:schema>

@@ -1,0 +1,12 @@
+body {font-family: sans-serif; font-size:12px}
+h1 {color: #666666; font-size:20px}
+h2 {color: #aa3333;font-size:18px}
+h3 {color: #dd3333;font-size:16px}
+h4 {color: #ff2222;font-size:14px}
+h5 {color: #aa3333;font-size:12px}
+th {font-size:12px; padding: 5px; }
+td {font-size:12px; padding: 5px;text-align:center;}
+a  {color: #00a040;}
+code.text {font-family: mono; font-weight: bold;}
+th { color: #aa3333;font-size:14px}
+table {border-collapse: collapse;}

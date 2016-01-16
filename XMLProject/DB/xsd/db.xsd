@@ -31,6 +31,7 @@
 			<xsd:element name="rechnungsBetrag" type="priceTyp"/>
 			<xsd:element name="status" type="rechnungStatusTyp"/>
 		</xsd:sequence>
+		<xsd:attribute name="id" type="idTyp" use="required"/>
 		<xsd:attribute name="unfallId" type="idTyp" use="required"/>
 	</xsd:complexType>
 	
@@ -115,7 +116,8 @@
 	
 	<xsd:complexType name="customerTyp">
 		<xsd:sequence>
-			<xsd:element name="geburtsDatum" type="datumTyp"/>
+			<xsd:element name="geburtsDatum" type="datumTyp" minOccurs="0"/>
+			<xsd:element name="unternehmen" type="xsd:string" minOccurs="0"/>
 			<xsd:element name="telefon" type="telefonTyp"/>
 			<xsd:element name="email" type="emailTyp"/>
 			<xsd:element name="schutzObjekte" type="schutzObjekteTyp"/>
@@ -157,16 +159,7 @@
 		</xsd:annotation>
 		<xsd:complexType>			
 			<xsd:sequence>
-				<xsd:element name="sicherheitsUnternehmen">
-					<xsd:annotation>
-						<xsd:documentation>Unternehmen</xsd:documentation>
-					</xsd:annotation>
-					<xsd:complexType>
-						<xsd:sequence>
-							<xsd:element name="unternehmen" type="unternehmenTyp" maxOccurs="unbounded"/>
-						</xsd:sequence>
-					</xsd:complexType>
-				</xsd:element>
+				<xsd:element name="sicherheitsUnternehmen" type="unternehmenTyp" maxOccurs="1" />
 			</xsd:sequence>
 			<xsd:attribute name="title" type="xsd:string"/>
 		</xsd:complexType>

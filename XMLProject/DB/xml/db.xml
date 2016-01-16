@@ -3,9 +3,8 @@
 <sicherheitsDienst xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../xsd/db.xsd"
 	title="Sicherheitsdienst">
 
-	<sicherheitsUnternehmen>
-		<unternehmen name="Firma" email="xyz@mail.de" telefon="0171/4454567">
-			
+	<sicherheitsUnternehmen name="Firma" email="xyz@mail.de" telefon="0171/4454567">
+		
 			<adresse hausnummer="10a" strasse="Oberstrasse" stadt="Bremen" zip="12313" />
 		
 		    <alleMitarbeiter>
@@ -27,6 +26,7 @@
 		    <kunden>
 			    <kunde id="1" name="Mustermann" vorname="Johannes">
 			    	<geburtsDatum>1990-07-01</geburtsDatum>
+			    	<unternehmen>Lubke Werkstatt</unternehmen>
 			        <telefon>04792/5566</telefon>
 			        <email>xxx@mail.de</email>
 			        <schutzObjekte>
@@ -51,11 +51,10 @@
 		    </unfaelle>
 		    
 		    <rechnungen>
-			    <rechnung unfallId="1">
+			    <rechnung id="33" unfallId="1">
 			    	<rechnungsBetrag>12.00 EUR</rechnungsBetrag>
 					<status>bezahlt</status>
 			    </rechnung>
 		    </rechnungen>
-	    </unternehmen>
 	</sicherheitsUnternehmen>
 </sicherheitsDienst>

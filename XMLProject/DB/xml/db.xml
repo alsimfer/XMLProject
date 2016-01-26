@@ -113,7 +113,7 @@
 			    </unfall>	
 		        <unfall id="2">
 			    	<kunde_id>2</kunde_id>
-			        <objekt_id>1</objekt_id>
+			        <objekt_id>2</objekt_id>
 			        <datum>2015-09-22</datum>
 			        <uhrzeit>02:19</uhrzeit>
 			        <ursache>Signalisierung</ursache> 

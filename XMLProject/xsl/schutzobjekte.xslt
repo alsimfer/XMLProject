@@ -56,21 +56,27 @@
 	<xsl:template name="objektVerantwortlicher">
 		<xsl:param name="objekt"/>
 		
-		<xsl:call-template name="mitarbeiter">
-			<xsl:with-param name="mr"><xsl:value-of select="//gebiete/gebiet/mitarbeiter_id[//gebiete/gebiet/gebietSchutzObjekte/objekt_id=$objekt]" /></xsl:with-param>
-		</xsl:call-template>
+		<xsl:for-each select="//gebiete/gebiet[gebietSchutzObjekte/objekt_id=$objekt]">
+			<xsl:for-each select="./mitarbeiter_id">
+				<xsl:call-template name="mitarbeiter">
+					<xsl:with-param name="mr"><xsl:value-of select="." /></xsl:with-param>
+				</xsl:call-template>
+			</xsl:for-each>
+		</xsl:for-each>
 		
 	</xsl:template>
 	
 	<xsl:template name="mitarbeiter">
 		<xsl:param name="mr"/>
 		<div>
-			<xsl:value-of select="//alleMitarbeiter/mitarbeiter/@name[//alleMitarbeiter/mitarbeiter/@id=$mr]"></xsl:value-of>
+		<xsl:for-each select="//alleMitarbeiter/mitarbeiter[@id=$mr]">
+			<xsl:value-of select="./@name"></xsl:value-of>
 			<xsl:value-of select="$komma"></xsl:value-of>
 			<xsl:value-of select="$leerzeichen"></xsl:value-of>
-			<xsl:value-of select="//alleMitarbeiter/mitarbeiter/@vorname[//alleMitarbeiter/mitarbeiter/@id=$mr]"></xsl:value-of>
+			<xsl:value-of select="./@vorname"></xsl:value-of>
 			<xsl:value-of select="$leerzeichen"></xsl:value-of>
 			<xsl:value-of select="$klammerAuf" /><xsl:value-of select="$mr" /><xsl:value-of select="$klammerZu" />
+		</xsl:for-each>
 		</div>
 	</xsl:template>
 	

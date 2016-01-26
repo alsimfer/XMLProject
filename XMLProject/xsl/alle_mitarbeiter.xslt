@@ -15,7 +15,7 @@
 		<body> 	
 			<!-- Alle Mitarbeiter -->	
 		   	<h1>Alle Mitarbeiter</h1>
-		   	<table border="1">
+		   	<table>
 				<tr>
 					<th>ID</th>
 					<th>Name</th>

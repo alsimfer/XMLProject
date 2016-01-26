@@ -13,12 +13,13 @@
 		</map:transformers>    
 	</map:components>
 
+	<!-- ========== here are navigation rules ================= -->
 	<map:pipelines>
 	<map:pipeline>
 		<map:match pattern="">
-			<map:redirect-to uri="sicherheitsdienst.html"/>
+			<map:redirect-to uri="index"/>
 		</map:match>
-		<map:match pattern="sicherheitsdienst.html">
+		<map:match pattern="index">
 			<map:generate src="DB/xml/db.xml"/>
 			<map:transform src="xsl/index.xslt"/>
 			<map:serialize type="html"/>

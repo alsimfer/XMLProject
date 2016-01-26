@@ -1,7 +1,2 @@
 1) erweitern DB --> erweitert..nun müssen mehrere Gebiete, Kunden, Unfaelle, Rechnungen hinzugefügt werden
-2) .xsd fÃ¼r db festlegen --> xsd hinzugefügt
-3) tabellen in html darstellen mit hilfe von cocoon ---> funktionalität umgesetzt
-4) rechnung als PDF erstellen --> umgesetzt 
 5) route berechnen
-6) style der index.html anpassen
-7) Style der Tabellen anpassen

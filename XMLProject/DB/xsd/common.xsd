@@ -26,7 +26,7 @@
 	</xsd:complexType>
 	
 	<xsd:simpleType name="postleitzahlTyp">
-		<xsd:restriction base="xsd:decimal">
+		<xsd:restriction base="xsd:integer">
 			<xsd:totalDigits value="5"/>
 		</xsd:restriction>
 	</xsd:simpleType>
@@ -39,7 +39,7 @@
 	
 	<xsd:simpleType name="telefonTyp">
 		<xsd:restriction base="xsd:string">
-	      <xsd:pattern value="[0-9]{4,5}[/][0-9]{4,7}"/>
+	      <xsd:pattern value="[0-9]{4,5}[/][0-9]{4,8}"/>
 	    </xsd:restriction>
 	</xsd:simpleType>
 	
@@ -56,7 +56,7 @@
 	</xsd:simpleType>
 	
 	<xsd:simpleType name="idTyp">
-		<xsd:restriction base="xsd:decimal">
+		<xsd:restriction base="xsd:integer">
 			<xsd:minLength value="1"/>
 		</xsd:restriction>
 	</xsd:simpleType>

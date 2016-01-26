@@ -11,7 +11,7 @@
 	<xsl:template match="sicherheitsDienst">
 		<head> 
 			<link rel="stylesheet" type="text/css" href="css/document.css"/>	
-			<title>Alle Unternehmen</title> 
+			<title>Alle Unfaelle</title> 
 		</head>
 		<body> 	
 			<!-- Alle Unfaelle -->	

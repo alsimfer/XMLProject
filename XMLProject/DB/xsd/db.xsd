@@ -74,7 +74,7 @@
 	<xsd:complexType name="gebietTyp">
 		<xsd:sequence>
 			<xsd:element name="gebietSchutzObjekte" type="gebietSchutzObjekteTyp"/>
-			<xsd:element name="mitarbeiter_id" type="idTyp"/>
+			<xsd:element name="mitarbeiter_id" type="idTyp" maxOccurs="unbounded"/>
 		</xsd:sequence>
 		<xsd:attribute name="id" type="idTyp" use="required"/>
 	</xsd:complexType>

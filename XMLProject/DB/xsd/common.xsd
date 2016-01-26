@@ -6,7 +6,7 @@
 
 	<xsd:simpleType name="nameTyp">
 		<xsd:restriction base="xsd:string">
-			<xsd:pattern value="([A-ZÄ,Ö,Ü][a-zä,ö,ü,ß]*([ |-][A-ZÄ,Ö,Ü][a-zä,ö,ü,ß]*)?)*"/>
+			<xsd:pattern value="([A-ZÄ,Ö,Ü][a-zä,ö,ü,ß]*([(&amp;)| |-]*[A-ZÄ,Ö,Ü][a-zä,ö,ü,ß]*[ |-]*)?)*"/>
 		</xsd:restriction>
 	</xsd:simpleType>
 	
@@ -57,7 +57,7 @@
 	
 	<xsd:simpleType name="idTyp">
 		<xsd:restriction base="xsd:integer">
-			<xsd:minLength value="1"/>
+			<xsd:minInclusive value="1"/>
 		</xsd:restriction>
 	</xsd:simpleType>
 	

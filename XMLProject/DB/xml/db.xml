@@ -136,6 +136,10 @@
 			    	<rechnungsBetrag>22.00 EUR</rechnungsBetrag>
 					<status>bezahlt</status>
 			    </rechnung>
+			    <rechnung id="35" unfallId="3">
+			    	<rechnungsBetrag>50.00 EUR</rechnungsBetrag>
+					<status>bezahlt</status>
+			    </rechnung>
 		    </rechnungen>
 	</sicherheitsUnternehmen>
 </sicherheitsDienst>

@@ -85,14 +85,20 @@
 				
 			</fo:static-content>
 			<fo:flow flow-name="xsl-region-body">
-				<xsl:element name="fo:block" use-attribute-sets="u1">Rechnung <xsl:value-of select="//rechnungen/rechnung/@id[//rechnungen/rechnung/@unfallId = $unfall]"/></xsl:element>
+				<xsl:element name="fo:block" use-attribute-sets="u1">Rechnung 
+					<xsl:for-each select="//rechnungen/rechnung[@unfallId = $unfall]">
+					<xsl:value-of select="./@id"/>
+					</xsl:for-each>	
+				</xsl:element>
 				<xsl:element name="fo:block" use-attribute-sets="standard">Datum: <xsl:value-of select="$currentDate"/></xsl:element>
 						
 				<xsl:element name="fo:block" use-attribute-sets="u2">Kunde</xsl:element>
 				<xsl:element name="fo:block" use-attribute-sets="standard">
 					<xsl:call-template name="kunde">
 					<xsl:with-param name="kundeId">
-					<xsl:value-of select="//unfaelle/unfall/kunde_id[//unfaelle/unfall/@id=$unfall]" />
+					<xsl:for-each select="//unfaelle/unfall[@id=$unfall]">
+						<xsl:value-of select="./kunde_id" />
+					</xsl:for-each>
 					</xsl:with-param>
 					</xsl:call-template>
 				</xsl:element>
@@ -150,7 +156,9 @@
 										</fo:table-cell>
 										<fo:table-cell border-style="solid" border-width="1pt" >
 											<xsl:element name="fo:block" use-attribute-sets="td_zahl">
-											<xsl:value-of select="//rechnungen/rechnung/rechnungsBetrag[//rechnungen/rechnung/@unfallId = $unfall]" />
+											<xsl:for-each select="//rechnungen/rechnung[@unfallId = $unfall]">
+												<xsl:value-of select="./rechnungsBetrag" />
+											</xsl:for-each>
 											</xsl:element>	
 										</fo:table-cell>
 									</fo:table-row>

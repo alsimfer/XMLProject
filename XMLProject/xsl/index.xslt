@@ -10,11 +10,27 @@
 		</html>
 	</xsl:template>
 	<xsl:template match="sicherheitsDienst">
+		
 		<head> 
 			<link rel="stylesheet" type="text/css" href="css/document.css"/>	
 			<title><xsl:value-of select="./@title"/></title> 
 		</head>
 		<body> 	
+			<script type="text/javascript">
+				<![CDATA[
+				function updateContent(id) {
+					var frames = document.getElementsByTagName("iframe");
+					var l = frames.length;
+					var i;
+					for(i=0; i < l; i++) {
+						if(frames[i].style.display == "block") {
+							frames[i].style.display = "none";
+						}
+					}
+					document.getElementById((String(id))).style.display="block";					
+				}
+				]]>
+			</script>
 			<div id="wrapper">
 				<div id="header">
 					<!-- Alle Mitarbeiter -->	
@@ -30,7 +46,13 @@
 					<!-- Route berechnen -->	
 					<div><xsl:call-template name="routeBerechnen" /></div>
 				</div>
-				<div id="content"></div>	
+				<div id="content">
+					<iframe id="alle_mitarbeiter_frame" name="alle_mitarbeiter_frame" scrolling="no" width="100%" height="100%" onload="updateContent(this.id); return false;"></iframe> 
+					<iframe id="alle_kunden_frame" name="alle_kunden_frame" scrolling="no" width="100%" height="100%" onload="updateContent(this.id); return false;"></iframe> 
+					<iframe id="schutzobjekte_frame" name="schutzobjekte_frame" scrolling="no" width="100%" height="100%" onload="updateContent(this.id); return false;"></iframe> 
+					<iframe id="alle_unfaelle_frame" name="alle_unfaelle_frame" scrolling="no" width="100%" height="100%" onload="updateContent(this.id); return false;"></iframe> 
+					<iframe id="route_berechnen_frame" name="route_berechnen_frame" scrolling="no" width="100%" height="100%" onload="updateContent(this.id); return false;"></iframe> 
+				</div>	
 				<div id="footer">
 					<span><xsl:call-template name="footer" /></span>
 				</div>
@@ -58,21 +80,21 @@
 	
 	<!-- Alle Mitarbeiter anzeigen-->	
 	<xsl:template name="alleMitarbeiter">
-		<form method="get" action="alle_mitarbeiter.html" target="ausgabe">
-			<input class="button" type="submit" value="Alle Mitarbeiter" />
+		<form id="alle_mitarbeiter" method="post" ajax="true" action="alle_mitarbeiter.html" target="alle_mitarbeiter_frame">
+			<input class="button" type="submit" value="Alle Mitarbeiter"/>
 		</form>
 	</xsl:template>
 
 	<!-- Alle Kunden anzeigen-->	
 	<xsl:template name="alleKunden">
-		<form method="get" action="alle_kunden.html" target="ausgabe">
+		<form id="alle_kunden" method="post" ajax="true" action="alle_kunden.html" target="alle_kunden_frame">
 			<input class="button" type="submit" value="Alle Kunden" />
 		</form>
 	</xsl:template>
 
 	<!-- Alle Schutzobjekte nach Kunde anzeigen-->	
 	<xsl:template name="schutzobjekte">
-		<form method="get" action="schutzobjekte.html" target="ausgabe">
+		<form id="schutzobjekte" method="post" ajax="true" action="schutzobjekte.html" target="schutzobjekte_frame">
 			<label for="kunde">Bitte wählen Sie die Kunden-ID: </label>
 			<select class="eingabe" name="kunde">
 				<!-- Vermeiden von Duplikaten -->
@@ -110,14 +132,14 @@
 
 	<!-- Alle Unfaelle anzeigen-->	
 	<xsl:template name="alleUnfaelle">
-		<form method="get" action="alle_unfaelle.html" target="ausgabe">
+		<form id="alle_unfaelle" method="post" ajax="true" action="alle_unfaelle.html" target="alle_unfaelle_frame">
 			<input class="button" type="submit" value="Alle Unfaelle" />
 		</form>
 	</xsl:template>
 
 	<!-- Route anzeigen-->	
 	<xsl:template name="routeBerechnen">
-		<form method="get" action="route_berechnen.html" target="ausgabe">
+		<form id="route_berechnen" method="post" ajax="true" action="route_berechnen.html" target="route_berechnen_frame">
 			<input class="button" type="submit" value="Route berechnen" />
 		</form>
 	</xsl:template>

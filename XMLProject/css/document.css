@@ -9,6 +9,11 @@ body {
 	text-decoration:none;
 	width:100%;
 }
+iframe {
+	display:none;
+	border:0;
+}
+
 #wrapper {
 	min-height:100%;
 	position:relative;

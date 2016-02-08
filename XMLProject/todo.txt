@@ -1,2 +1,10 @@
-1) erweitern DB --> erweitert..nun müssen mehrere Gebiete, Kunden, Unfaelle, Rechnungen hinzugefügt werden
-5) route berechnen
+Unbedingt machen
+- arrays von xml an JS Ã¼bergeben, so dass z.B. die Ã¼berwachte Objekte eines Kundens richtig angezeigt werden
+- falsche zentrierung ab und zu
+- DB erweitern
+- Route zu einem Random-Objekt darstellen (momentan statische 2 Punkte)
+
+Falls nichts zu tun
+- selectfield auf route berechnen Seite um ein endpunkt manuel auszuwÃ¤hlen
+- was passiert wenn die tabelle langen werden? Scroll? Aufsplitten auf mehrere seiten mit z.B. dataTable?
+- geocoding miteinbinden (coordinates automatisch aus adresse-string ziehen)

@@ -16,7 +16,7 @@
 		<body> 	
 			<!-- Alle Unfaelle -->	
 		   	<h1>Alle Unfaelle</h1>
-		   	<table border="1">
+		   	<table>
 				<tr>
 					<th>ID</th>
 					<th>Kunden-ID</th>

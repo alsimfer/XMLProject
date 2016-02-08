@@ -5,6 +5,7 @@
 	<xsl:param name="kunde"/>
 	<xsl:variable name="leerzeichen">&#160;</xsl:variable>
 	<xsl:variable name="strich">&#45;</xsl:variable>
+	<xsl:variable name="ampersand">&amp;</xsl:variable>	
 	<xsl:variable name="komma">&#44;</xsl:variable>
 	<xsl:variable name="klammerAuf">&#40;</xsl:variable>
 	<xsl:variable name="klammerZu">&#41;</xsl:variable>
@@ -16,12 +17,60 @@
 	<xsl:template match="sicherheitsDienst">
 		<head> 
 			<link rel="stylesheet" type="text/css" href="css/document.css"/>	
+			<style type="text/css">
+				html, body { height: 100%; margin: 0; padding: 0; }
+  				#map { height: 100%; }
+  			</style>	
 			<title>Schutzobjekte nach Kunden</title> 
+			<script async="async" defer="defer" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA857r6vc8G0Xr08_FqcsfM0Ox56XAmFac&amp;callback=initMap"></script>
+			<script type="text/javascript">	
+				<![CDATA[
+					function initMap() {
+					// Create empty LatLngBounds object.
+					var bounds = new google.maps.LatLngBounds();
+					var coord1 = new google.maps.LatLng(53.05541494, 8.78298998);
+					var coord2 = new google.maps.LatLng(53.05041494, 8.78598998);
+					var mapOptions = {
+					    center: coord1,
+					    scrollwheel: false,
+					    zoom: 15
+					    // mapTypeId: google.maps.MapTypeId.SATELLITE
+				  	};
+
+					// Create a map object and specify the DOM element for display.
+					var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+
+					var marker1 = new google.maps.Marker({
+					    position: coord1,
+					    map: map
+				    })	
+				    var marker2 = new google.maps.Marker({
+					    position: coord2,
+					    map: map
+				    })	
+
+					/* Find out how to pass the array from xml to JS and use following to see all objects of a client.
+					for (i = 0; i < locations.length; i++) {  
+					  	var marker = new google.maps.Marker({
+					    	position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+					    	map: map
+					  	});
+
+					  	//extend the bounds to include each marker's position
+					 	bounds.extend(marker.position);
+				 	}	
+			
+					//now fit the map to the newly inclusive bounds
+					map.fitBounds(bounds);
+					*/
+					}
+				]]>
+			</script>
 		</head>
 		<body> 	
 			<!-- Schutzobjekte -->	
 		   	<h1>Schutzobjekte nach Kunden</h1>
-		   	<table border="1">
+		   	<table>
 				<tr>
 					<th>ID</th>
 					<th>Strasse mit Hausnummer</th>
@@ -49,6 +98,10 @@
 				</tr>
 				</xsl:for-each>
 			</table>
+
+			
+			<div id="map">
+			</div>
 		   
 		</body>
 	</xsl:template>

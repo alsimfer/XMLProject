@@ -1,5 +1,5 @@
 Unbedingt machen
-- arrays von xml an JS übergeben, so dass z.B. die überwachte Objekte eines Kundens richtig angezeigt werden
+- kunde nummer 3 funktioniert nicht wieso?
 - falsche zentrierung ab und zu
 - DB erweitern
 - Route zu einem Random-Objekt darstellen (momentan statische 2 Punkte)

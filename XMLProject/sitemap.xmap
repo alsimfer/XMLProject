@@ -58,6 +58,11 @@
 			<map:transform src="xsl/route_berechnen.xslt" />	
 			<map:serialize type="html"/>
 		</map:match>
+		<!-- To get db.xml from js -->
+		<map:match pattern="db.xml">
+			<map:generate src="DB/xml/db.xml"/>
+			<map:serialize type="xml"/>
+		</map:match>
 		<!-- Abfrage der zugehoerigen CSS-Dokumente -->
 		<map:match pattern="css/**">
 			<map:read src="css/{1}"/>

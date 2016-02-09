@@ -57,6 +57,7 @@
 			    </gebiet>
 		    </gebiete>
 		    
+		    <!-- http://www.mapcoordinates.net/en for the manual geocoording -->
 		    <kunden>
 			    <kunde id="1" name="Mustermann" vorname="Johannes">
 			    	<geburtsDatum>1990-07-01</geburtsDatum>
@@ -65,9 +66,9 @@
 			        <email>xxx@mail.de</email>
 			        <schutzObjekte>
 				        <objekt id="1">
-					        <objektAdresse hausnummer="1" strasse="Leipziger Str." stadt="Bremen" zip="12320">
-						        <koordinate_x>51.0412414</koordinate_x>
-						        <koordinate_y>51.0412414</koordinate_y>
+					        <objektAdresse hausnummer="1" strasse="Rudolf-Hilferding-Platz" stadt="Bremen" zip="12320">
+						        <koordinate_x>53.07946752</koordinate_x>
+						        <koordinate_y>8.812698130</koordinate_y>
 						    </objektAdresse>
 					    </objekt>
 				    </schutzObjekte>
@@ -79,9 +80,9 @@
 			        <email>yyy@mail.de</email>
 			        <schutzObjekte>
 				        <objekt id="2">
-					        <objektAdresse hausnummer="11" strasse="Schoene Str." stadt="Bremen" zip="12323">
-						        <koordinate_x>52.0412414</koordinate_x>
-						        <koordinate_y>52.0412414</koordinate_y>
+					        <objektAdresse hausnummer="11" strasse="Hollerallee" stadt="Bremen" zip="12323">
+						        <koordinate_x>53.08704604</koordinate_x>
+						        <koordinate_y>8.817365170</koordinate_y>
 						    </objektAdresse>
 					    </objekt>
 				    </schutzObjekte>
@@ -93,16 +94,14 @@
 			        <email>string@email.de</email>
 			        <schutzObjekte>
 				        <objekt id="5">
-					        <objektAdresse hausnummer="21" strasse="Hoene Str." stadt="Bremen" zip="12324">
-						        <koordinate_x>53.0412414</koordinate_x>
-						        <koordinate_y>53.0412414</koordinate_y>
+					        <objektAdresse hausnummer="21" strasse="Herbststrasse" stadt="Bremen" zip="12324">
+						        <koordinate_x>53.09120206</koordinate_x>
+						        <koordinate_y>8.806250100</koordinate_y>
 						    </objektAdresse>
 					    </objekt>
 				    </schutzObjekte>
 			    </kunde>
 		    </kunden>
-
-
 			<unfaelle>
 			    <unfall id="1">
 			    	<kunde_id>1</kunde_id>

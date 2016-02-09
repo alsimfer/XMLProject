@@ -63,7 +63,7 @@
 	
 	<xsd:simpleType name="koordinatenTyp">
 		<xsd:restriction base="xsd:string">
-			<xsd:pattern value="\d{2}[\.]\d{2,}"/>
+			<xsd:pattern value="\d{1,3}[\.]\d{2,}"/>
 		</xsd:restriction>
 	</xsd:simpleType>
 

@@ -9,56 +9,37 @@
 			<xsl:apply-templates/>
 		</html>
 	</xsl:template>
+
+	<!-- Main page -->
 	<xsl:template match="sicherheitsDienst">
-		
 		<head> 
-			<link rel="stylesheet" type="text/css" href="css/document.css"/>	
 			<title><xsl:value-of select="./@title"/></title> 
+			<!-- Here are all styles! -->
+			<link rel="stylesheet" type="text/css" href="css/document.css"/>
+			<!-- Here are all js scripts! -->
+			<script src="js/jquery-2.2.0.js"></script>
+			<script src="js/custom.js"></script>
+			<script async="async" defer="defer" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA857r6vc8G0Xr08_FqcsfM0Ox56XAmFac"></script>
 		</head>
 		<body> 	
-			<script type="text/javascript">
-				<![CDATA[
-				function updateContent(id) {
-					var frames = document.getElementsByTagName("iframe");
-					var l = frames.length;
-					var i;
-					for(i=0; i < l; i++) {
-						if(frames[i].style.display == "block") {
-							frames[i].style.display = "none";
-						}
-					}
-					document.getElementById((String(id))).style.display="block";					
-				}
-				]]>
-			</script>
 			<div id="wrapper">
 				<div id="header">
-					<!-- Alle Mitarbeiter -->	
-					<div><xsl:call-template name="alleMitarbeiter" /></div>
-					<!-- Alle Kunden -->	
-					<div><xsl:call-template name="alleKunden" /></div>
+					<div><button class="button" onclick="alleMitarbeiter()">Alle Mitarbeiter</button></div>
+					<div><button class="button" onclick="alleKunden()">Alle Kunden</button></div>
 					<!-- Schutzobjekte nach Kunden -->	
 					<div><xsl:call-template name="schutzobjekte" /></div>
 					<!-- Rechnung erstellen -->	
 					<div><xsl:call-template name="rechnungErstellen" /></div>
-					<!-- Alle Unfaelle -->	
-					<div><xsl:call-template name="alleUnfaelle" /></div>
-					<!-- Route berechnen -->	
-					<div><xsl:call-template name="routeBerechnen" /></div>
+					<div><button class="button" onclick="alleUnfaelle()">Alle Unfaelle</button></div>
+					<div><button class="button" onclick="routeBerechnen()">Route berechnen</button></div>
 				</div>
-				<div id="content">
-					<iframe id="alle_mitarbeiter_frame" name="alle_mitarbeiter_frame" scrolling="no" width="100%" height="100%" onload="updateContent(this.id); return false;"></iframe> 
-					<iframe id="alle_kunden_frame" name="alle_kunden_frame" scrolling="no" width="100%" height="100%" onload="updateContent(this.id); return false;"></iframe> 
-					<iframe id="schutzobjekte_frame" name="schutzobjekte_frame" scrolling="no" width="100%" height="100%" onload="updateContent(this.id); return false;"></iframe> 
-					<iframe id="alle_unfaelle_frame" name="alle_unfaelle_frame" scrolling="no" width="100%" height="100%" onload="updateContent(this.id); return false;"></iframe> 
-					<iframe id="route_berechnen_frame" name="route_berechnen_frame" scrolling="no" width="100%" height="100%" onload="updateContent(this.id); return false;"></iframe> 
+				<div id="content">					
 				</div>	
 				<div id="footer">
 					<span><xsl:call-template name="footer" /></span>
 				</div>
 			</div>
 		</body>
-		
 	</xsl:template>
 	
 	<!-- Footer -->	
@@ -78,30 +59,17 @@
 		<xsl:value-of select="//sicherheitsUnternehmen/@telefon"/>
 	</xsl:template>
 	
-	<!-- Alle Mitarbeiter anzeigen-->	
-	<xsl:template name="alleMitarbeiter">
-		<form id="alle_mitarbeiter" method="post" ajax="true" action="alle_mitarbeiter.html" target="alle_mitarbeiter_frame">
-			<input class="button" type="submit" value="Alle Mitarbeiter"/>
-		</form>
-	</xsl:template>
-
-	<!-- Alle Kunden anzeigen-->	
-	<xsl:template name="alleKunden">
-		<form id="alle_kunden" method="post" ajax="true" action="alle_kunden.html" target="alle_kunden_frame">
-			<input class="button" type="submit" value="Alle Kunden" />
-		</form>
-	</xsl:template>
 
 	<!-- Alle Schutzobjekte nach Kunde anzeigen-->	
 	<xsl:template name="schutzobjekte">
-		<form id="schutzobjekte" method="post" ajax="true" action="schutzobjekte.html" target="schutzobjekte_frame">
+		<form id="schutzobjekte" method="POST" action="schutzobjekte.html" ajax="true">
 			<label for="kunde">Bitte wählen Sie die Kunden-ID: </label>
 			<select class="eingabe" name="kunde">
 				<!-- Vermeiden von Duplikaten -->
 				<xsl:for-each select="//kunden/kunde/@id[not(.=../preceding-sibling::kunde/@id)]">
 					<xsl:element name="option">
 						<xsl:attribute name="value">
-							<xsl:value-of select="."/>
+							<xsl:value-of select="."/> 
 						</xsl:attribute>
 						<xsl:value-of select="."/>
 					</xsl:element>
@@ -130,18 +98,5 @@
 		</form>
 	</xsl:template>
 
-	<!-- Alle Unfaelle anzeigen-->	
-	<xsl:template name="alleUnfaelle">
-		<form id="alle_unfaelle" method="post" ajax="true" action="alle_unfaelle.html" target="alle_unfaelle_frame">
-			<input class="button" type="submit" value="Alle Unfaelle" />
-		</form>
-	</xsl:template>
-
-	<!-- Route anzeigen-->	
-	<xsl:template name="routeBerechnen">
-		<form id="route_berechnen" method="post" ajax="true" action="route_berechnen.html" target="route_berechnen_frame">
-			<input class="button" type="submit" value="Route berechnen" />
-		</form>
-	</xsl:template>
 </xsl:stylesheet>
 

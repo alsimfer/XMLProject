@@ -1,10 +1,9 @@
 Unbedingt machen
-- kunde nummer 3 funktioniert nicht wieso?
 - falsche zentrierung ab und zu
 - DB erweitern
 - Route zu einem Random-Objekt darstellen (momentan statische 2 Punkte)
 
 Falls nichts zu tun
-- selectfield auf route berechnen Seite um ein endpunkt manuel auszuw√§hlen
+- selectfield auf route berechnen Seite um ein endpunkt manuel auszuwählen
 - was passiert wenn die tabelle langen werden? Scroll? Aufsplitten auf mehrere seiten mit z.B. dataTable?
 - geocoding miteinbinden (coordinates automatisch aus adresse-string ziehen)

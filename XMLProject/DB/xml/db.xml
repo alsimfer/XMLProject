@@ -71,6 +71,12 @@
 						        <koordinate_y>8.812698130</koordinate_y>
 						    </objektAdresse>
 					    </objekt>
+					    <objekt id="3">
+					        <objektAdresse hausnummer="13" strasse="Am biologischen Garten" stadt="Bremen" zip="32320">
+						        <koordinate_x>53.11142872</koordinate_x>
+						        <koordinate_y>8.85601044</koordinate_y>
+						    </objektAdresse>
+					    </objekt>
 				    </schutzObjekte>
 			    </kunde>
 			    <kunde id="2" name="Ahrens" vorname="Alexander">

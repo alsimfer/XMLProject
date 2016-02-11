@@ -4,11 +4,30 @@
 	<xsl:variable name="leerzeichen">&#160;</xsl:variable>
 	<xsl:variable name="ampersand">&amp;</xsl:variable>	
 	<xsl:variable name="komma">&#44;</xsl:variable>
+	<xsl:variable name="delimeter">&#35;</xsl:variable>
 	<xsl:template match="/">
-		<script async="async" defer="defer" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA857r6vc8G0Xr08_FqcsfM0Ox56XAmFac&amp;callback=routeMap"></script>
-		<script>
-			console.log('Hi');			
-		</script>
+		<style type="text/css">
+			#routeTo { height: 5%; }
+			#map { height: 95%; }	
+		</style>	
+		
+		<label for="destination">Bitte wählen Sie das Ziel: </label>
+		<select id="destination" class="eingabe" name="destination">
+			<!-- Vermeiden von Duplikaten -->
+			<xsl:for-each select="//objektAdresse">
+				<xsl:element name="option">
+					<xsl:attribute name="value">
+						<xsl:value-of select="./koordinate_x"/>
+						<xsl:value-of select="$delimeter"/>
+						<xsl:value-of select="./koordinate_y"/>
+					</xsl:attribute>
+					<xsl:value-of select="./@strasse"/> 
+					<xsl:value-of select="$leerzeichen"/>
+					<xsl:value-of select="./@hausnummer"/>
+				</xsl:element>
+			</xsl:for-each>
+		</select>
+		<button class="button" onclick="showRouteAndMap()">Route anzeigen</button>
 		<div id="map">
 		</div>
 	</xsl:template>

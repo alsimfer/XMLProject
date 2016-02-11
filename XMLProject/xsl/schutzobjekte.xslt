@@ -14,18 +14,7 @@
 			#table { height: 10%; overflow-y:auto; }
 			#map { height: 83%; }	
 		</style>	
-		<script type="text/javascript">
-			function getID() {
-		        var id = <xsl:value-of select="$kunde"/>;
-		        return id;
-    		}
-
-    		function show() {
-    			getObjectsByClient(getID());
-    		}
-		</script>
 		
-
 		<!-- Schutzobjekte -->	
 	   	<h1>Schutzobjekte nach Kunden</h1>
 	   	<div id="table">

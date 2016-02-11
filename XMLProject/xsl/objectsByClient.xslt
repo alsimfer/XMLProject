@@ -12,10 +12,12 @@
 	<xsl:template match="/">
 		<objects>
 			<xsl:for-each select="//kunden/kunde[@id=$kunde]">
-				<object>
-					<x><xsl:value-of select="./schutzObjekte/objekt/objektAdresse/koordinate_x"/></x>
-					<y><xsl:value-of select="./schutzObjekte/objekt/objektAdresse/koordinate_y"/></y>
-				</object>
+				<xsl:for-each select="./schutzObjekte/objekt">
+					<object>
+						<x><xsl:value-of select="./objektAdresse/koordinate_x"/></x>
+						<y><xsl:value-of select="./objektAdresse/koordinate_y"/></y>
+					</object>
+				</xsl:for-each>
 			</xsl:for-each>
 		</objects>
 	</xsl:template>

@@ -80,14 +80,15 @@ function getObjectsByClient(params) {
 }
 
 /**
- * Maps
+ * We use always HS Bremen as a start and different destination points. IRL should be implemented automatical recognition with the hardware sensors.
  */
-function routeMap() {
+function showRouteAndMap() {
 	var directionsDisplay;
 	var directionsService = new google.maps.DirectionsService();
-	var map;
 	var start = new google.maps.LatLng(53.05541494, 8.78298998);
-	var end = new google.maps.LatLng(53.08697516, 8.81777287);
+	var koords = $('#destination').val().split('#');
+	console.log(koords);
+	var end = new google.maps.LatLng(koords[0], koords[1]);
 
 	directionsDisplay = new google.maps.DirectionsRenderer();
 	var bremen = new google.maps.LatLng(53.0792962, 8.8016937);
@@ -95,7 +96,8 @@ function routeMap() {
 		zoom:15,
 		center: bremen
 	}
-	map = new google.maps.Map(document.getElementById("map"), mapOptions);
+
+	var map = new google.maps.Map(document.getElementById("map"), mapOptions);
 	directionsDisplay.setMap(map);
 
 	var request = {
@@ -111,17 +113,52 @@ function routeMap() {
 	});
 }
 
+/**
+ * xml-Param is an xml with all guarded objects of a certain client with the structure
+ * <objects>
+ *  <object> 
+ *   <x>12345</x>
+ *   <y>12345</y>
+ *  </object>...
+ * </objects>
+ */
 function showObjectsAndMap(xml) {
-	console.log(xml);
 	var bounds = new google.maps.LatLngBounds();
+	// Bremen Mitte.
 	var centerIn = new google.maps.LatLng(53.08697516, 8.81777287);
 	var mapOptions = {
 	    center: centerIn,
 	    scrollwheel: false,
 	    zoom: 15
-	    // mapTypeId: google.maps.MapTypeId.SATELLITE
   	};
 
 	// Create a map object and specify the DOM element for display.
 	var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+
+	// Make an array of all objects.
+	var x = xml.getElementsByTagName('x');
+	var y = xml.getElementsByTagName('y');
+	var locations = [];
+	for (var i=0; i<x.length && i<y.length; i++) locations[i] = [x[i].childNodes[0].nodeValue, y[i].childNodes[0].nodeValue];					
+	console.log(locations);
+
+	// Show each object on the map.
+	for (i = 0; i < locations.length; i++) {  
+	  	var marker = new google.maps.Marker({
+    		position: new google.maps.LatLng(locations[i][0], locations[i][1]),
+	    	map: map
+	  	});
+
+  		// Extend the bounds to include each marker's position
+	 	bounds.extend(marker.position);
+ 	}
+	
+	// Now fit the map to the newly inclusive bounds, but only if there are many objects, else too close.
+	if (locations.length > 1) {
+		map.fitBounds(bounds); 
+	} else {
+		var centerIn = new google.maps.LatLng(locations[0][0], locations[0][1]);
+		map.panTo(centerIn);
+	}
+
 }

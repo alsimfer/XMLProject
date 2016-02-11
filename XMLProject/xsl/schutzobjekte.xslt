@@ -29,9 +29,13 @@
 				<tr>
 					<td><xsl:value-of select="./schutzObjekte/objekt/@id"/></td>
 					<td>
-						<xsl:value-of select="./schutzObjekte/objekt/objektAdresse/@strasse"/>
-						<xsl:value-of select="$leerzeichen"/>
-						<xsl:value-of select="./schutzObjekte/objekt/objektAdresse/@hausnummer"/>
+						<xsl:for-each select="./schutzObjekte/objekt">
+							<div>
+								<xsl:value-of select="./objektAdresse/@strasse"/>
+								<xsl:value-of select="$leerzeichen"/>
+								<xsl:value-of select="./objektAdresse/@hausnummer"/>
+							</div>								
+						</xsl:for-each>
 					</td>
 					<td>
 						<xsl:value-of select="./schutzObjekte/objekt/objektAdresse/@zip"/>
@@ -40,7 +44,7 @@
 					</td>
 					<td>
 						<xsl:call-template name="objektVerantwortlicher">
-						<xsl:with-param name="objekt"><xsl:value-of select="./schutzObjekte/objekt/@id"/></xsl:with-param>
+							<xsl:with-param name="objekt"><xsl:value-of select="./schutzObjekte/objekt/@id"/></xsl:with-param>
 						</xsl:call-template>
 					</td>		
 				</tr>

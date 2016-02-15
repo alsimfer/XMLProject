@@ -21,33 +21,35 @@
 		   	<table>
 				<tr>
 					<th>ID</th>
+					<th>Kunde</th>
 					<th>Strasse mit Hausnummer</th>
 					<th>Ort</th>
 					<th>Verantwortlicher (Verantwortlicher-ID)</th>
 				</tr>
 				<xsl:for-each select="//kunden/kunde[@id=$kunde and not(schutzObjekte/objekt/@id=../preceding-sibling::schutzObjekte/objekt/@id)]">
-				<tr>
-					<td><xsl:value-of select="./schutzObjekte/objekt/@id"/></td>
-					<td>
-						<xsl:for-each select="./schutzObjekte/objekt">
-							<div>
-								<xsl:value-of select="./objektAdresse/@strasse"/>
-								<xsl:value-of select="$leerzeichen"/>
-								<xsl:value-of select="./objektAdresse/@hausnummer"/>
-							</div>								
-						</xsl:for-each>
-					</td>
-					<td>
-						<xsl:value-of select="./schutzObjekte/objekt/objektAdresse/@zip"/>
-						<xsl:value-of select="$leerzeichen"/>
-						<xsl:value-of select="./schutzObjekte/objekt/objektAdresse/@stadt"/>
-					</td>
-					<td>
-						<xsl:call-template name="objektVerantwortlicher">
-							<xsl:with-param name="objekt"><xsl:value-of select="./schutzObjekte/objekt/@id"/></xsl:with-param>
-						</xsl:call-template>
-					</td>		
-				</tr>
+					<tr>
+						<td><xsl:value-of select="./schutzObjekte/objekt/@id"/></td>
+						<td><xsl:value-of select="./unternehmen"/></td>
+						<td>
+							<xsl:for-each select="./schutzObjekte/objekt">
+								<div>
+									<xsl:value-of select="./objektAdresse/@strasse"/>
+									<xsl:value-of select="$leerzeichen"/>
+									<xsl:value-of select="./objektAdresse/@hausnummer"/>
+								</div>								
+							</xsl:for-each>
+						</td>
+						<td>
+							<xsl:value-of select="./schutzObjekte/objekt/objektAdresse/@zip"/>
+							<xsl:value-of select="$leerzeichen"/>
+							<xsl:value-of select="./schutzObjekte/objekt/objektAdresse/@stadt"/>
+						</td>
+						<td>
+							<xsl:call-template name="objektVerantwortlicher">
+								<xsl:with-param name="objekt"><xsl:value-of select="./schutzObjekte/objekt/@id"/></xsl:with-param>
+							</xsl:call-template>
+						</td>		
+					</tr>
 				</xsl:for-each>
 			</table>
 		</div>		

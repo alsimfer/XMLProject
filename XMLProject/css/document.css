@@ -29,10 +29,11 @@ iframe {
 #header div{	
 	float: left;
 	display: inline-block;
+	margin-left: 5px;
 }
 #content {
-	padding-bottom: 50px; /* Height of the footer element */
-	height: 700px;
+	padding-bottom: 70px; /* Height of the footer element */
+	height: 680px;
 	width: 90%;
 	margin-left: auto;
     margin-right: auto;
@@ -98,7 +99,8 @@ iframe {
 	top:1px;
 }
 #map { 
-	height: 100%; 
+	height: 100%;
+	width: auto;
 }
 
 

@@ -11,14 +11,39 @@
 	<xsl:variable name="klammerZu">&#41;</xsl:variable>
 	<xsl:template match="/">
 		<objects>
-			<xsl:for-each select="//kunden/kunde[@id=$kunde]">
-				<xsl:for-each select="./schutzObjekte/objekt">
-					<object>
-						<x><xsl:value-of select="./objektAdresse/koordinate_x"/></x>
-						<y><xsl:value-of select="./objektAdresse/koordinate_y"/></y>
-					</object>
-				</xsl:for-each>
-			</xsl:for-each>
+			<xsl:choose>
+				<xsl:when test="$kunde > 0">
+					<xsl:for-each select="//kunden/kunde[@id=$kunde]">
+						<xsl:for-each select="./schutzObjekte/objekt">
+							<object>						
+								<x><xsl:value-of select="./objektAdresse/koordinate_x"/></x>
+								<y><xsl:value-of select="./objektAdresse/koordinate_y"/></y>
+								<address>
+								   	<xsl:value-of select="./objektAdresse/@strasse"/>
+								   	<xsl:value-of select="$leerzeichen"/>
+								   	<xsl:value-of select="./objektAdresse/@hausnummer"/>
+							    </address>
+							    <info><xsl:value-of select="./objektAdresse/info"/></info>
+							</object>
+						</xsl:for-each>
+					</xsl:for-each>
+				</xsl:when>
+				<xsl:otherwise>
+					<xsl:for-each select="//schutzObjekte/objekt">
+							<object>						
+								<x><xsl:value-of select="./objektAdresse/koordinate_x"/></x>
+								<y><xsl:value-of select="./objektAdresse/koordinate_y"/></y>
+								<address>
+								   	<xsl:value-of select="./objektAdresse/@strasse"/>
+								   	<xsl:value-of select="$leerzeichen"/>
+								   	<xsl:value-of select="./objektAdresse/@hausnummer"/>
+							    </address>
+							    <info><xsl:value-of select="./objektAdresse/info"/></info>
+							</object>
+						</xsl:for-each>
+				</xsl:otherwise>
+			</xsl:choose>
+			
 		</objects>
 	</xsl:template>
 	

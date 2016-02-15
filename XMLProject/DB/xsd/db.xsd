@@ -146,6 +146,7 @@
 				<xsd:sequence>
 					<xsd:element name="koordinate_x" type="koordinatenTyp"/>
 					<xsd:element name="koordinate_y" type="koordinatenTyp"/>
+					<xsd:element name="info" type="infoTyp"/>
 				</xsd:sequence>
 			</xsd:extension>
 		</xsd:complexContent>

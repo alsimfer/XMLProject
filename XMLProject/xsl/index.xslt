@@ -19,7 +19,7 @@
 			<!-- Here are all js scripts! -->
 			<script src="js/jquery-2.2.0.js"></script>
 			<script src="js/custom.js"></script>
-			<script async="async" defer="defer" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA857r6vc8G0Xr08_FqcsfM0Ox56XAmFac"></script>
+			<script async="async" defer="defer" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyA857r6vc8G0Xr08_FqcsfM0Ox56XAmFac&amp;callback=loadAllObjects"></script>
 		</head>
 		<body> 	
 			<div id="wrapper">
@@ -33,11 +33,14 @@
 					<div><button class="button" onclick="alleUnfaelle()">Alle Unfaelle</button></div>
 					<div><button class="button" onclick="routeBerechnen()">Route berechnen</button></div>
 				</div>
-				<div id="content">					
+				<div id="content">		
+					<div id="map">
+					</div>
 				</div>	
 				<div id="footer">
 					<span><xsl:call-template name="footer" /></span>
 				</div>
+				<div style='clear:both'></div>
 			</div>
 		</body>
 	</xsl:template>

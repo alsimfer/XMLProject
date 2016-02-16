@@ -69,7 +69,7 @@
 			<map:serialize type="xml"/>
 		</map:match>
 
-		<!-- Abfrage der objekten eines ausgewählten Kunden -->
+		<!-- Abfrage der Objekten eines ausgewaehlten Kunden fuer die Darstellung auf der Karte -->
 		<map:match pattern="objectsByClient.xml">
 			<map:generate src="DB/xml/db.xml"/>
 			<map:transform src="xsl/objectsByClient.xslt" >	
